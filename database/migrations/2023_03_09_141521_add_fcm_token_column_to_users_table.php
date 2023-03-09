@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class AddFcmTokenColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        $table->string('Product_name', 999);
-        $table->text('description')->nullable();
-        $table->unsignedBigInteger('section_id');
+        Schema::table('users', function (Blueprint $table) {
+                $table->text('fcm_token')->nullable()->after('remember_token');
+        });
     }
 
     /**
@@ -25,6 +25,8 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }
