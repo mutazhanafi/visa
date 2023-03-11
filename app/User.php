@@ -34,4 +34,9 @@ protected $casts = [
 'roles_name' => 'array',
 
 ];
+
+public function Invoice()
+{
+    return $this->hasMany('App\Invoices');
+}
 }

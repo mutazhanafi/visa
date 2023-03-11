@@ -4,10 +4,17 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 Use App\User;
+Use App\Invoices;
 Use App\Notifications\visaExpiredNotification;
+Use Carbon\Carbon;
+Use Illuminate\Support\Facades\Notifiction;
+use App\Console\Commands\Notification;
+use Illuminate\Notifications\Notifiable;
+
 
 class sendExpiredNotification extends Command
 {
+    use Notifiable;
     /**
      * The name and signature of the console command.
      *
@@ -39,9 +46,20 @@ class sendExpiredNotification extends Command
      */
     public function handle()
     {
-        ;
-        $users = User::where('id' , 2)->get();
-        $users->visaExpiredNotification();
+        $expiredVisas = Invoices::whereDate('Due_date' , \Carbon\Carbon::now()->today())->get();
+        foreach($expiredVisas as $expiredVisa)
+        {
+           $users = User::where('id' , 2)->get();
+              foreach ($users as $user) {
+                  $user->notify(new visaExpiredNotification($expiredVisa));
+                }
+            }
+        
+
+
+
+
+        // $users->visaExpiredNotification();
         // dd($users);
         // $users->map(function($user){
         //         $messages = GetThreadMessages::new($user);
