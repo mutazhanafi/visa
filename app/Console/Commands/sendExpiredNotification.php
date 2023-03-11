@@ -47,6 +47,7 @@ class sendExpiredNotification extends Command
     public function handle()
     {
         $expiredVisas = Invoices::whereDate('Due_date' , \Carbon\Carbon::now()->today())->get();
+        if($expiredVisa){
         foreach($expiredVisas as $expiredVisa)
         {
            $users = User::where('id' , 2)->get();
@@ -54,6 +55,7 @@ class sendExpiredNotification extends Command
                   $user->notify(new visaExpiredNotification($expiredVisa));
                 }
             }
+        }
         
 
 
