@@ -16,6 +16,7 @@ class visaExpiredNotification extends Notification implements ShouldQueue
 
     public function __construct($visaDetails)
     {
+         dd($visaDetails);
       $this->invoice_number    = $visaDetails->invoice_number;
       $this->invoice_name      = $visaDetails->invoice_name;
       $this->invoice_Date      = $visaDetails->invoice_Date;
