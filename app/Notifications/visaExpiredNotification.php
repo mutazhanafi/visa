@@ -16,23 +16,24 @@ class visaExpiredNotification extends Notification implements ShouldQueue
 
     public function __construct($visaDetails)
     {
-        //  dd($visaDetails);
-      $this->invoice_number    = $visaDetails->invoice_number;
-      $this->invoice_name      = $visaDetails->invoice_name;
-      $this->invoice_Date      = $visaDetails->invoice_Date;
-      $this->Due_date          = $visaDetails->Due_date;
-      $this->product           = $visaDetails->product;
-      $this->section_id        = $visaDetails->section_id;
-      $this->Amount_collection = $visaDetails->Amount_collection;
-      $this->Amount_Commission = $visaDetails->Amount_Commission;
-      $this->Discount          = $visaDetails->Discount;
-      $this->Value_VAT         = $visaDetails->Value_VAT;
-      $this->Rate_VAT          = $visaDetails->Rate_VAT;
-      $this->Total             = $visaDetails->Total;
-      $this->Status            = $visaDetails->Status;
-      $this->Value_Status      = $visaDetails->Value_Status;
-      $this->note              = $visaDetails->note;
-      $this->Payment_Date      = $visaDetails->Payment_Date;
+        $this->data = $visaDetails;
+    //  dd($visaDetails);
+    //   $this->invoice_number    = $visaDetails->invoice_number;
+    //   $this->invoice_name      = $visaDetails->invoice_name;
+    //   $this->invoice_Date      = $visaDetails->invoice_Date;
+    //   $this->Due_date          = $visaDetails->Due_date;
+    //   $this->product           = $visaDetails->product;
+    //   $this->section_id        = $visaDetails->section_id;
+    //   $this->Amount_collection = $visaDetails->Amount_collection;
+    //   $this->Amount_Commission = $visaDetails->Amount_Commission;
+    //   $this->Discount          = $visaDetails->Discount;
+    //   $this->Value_VAT         = $visaDetails->Value_VAT;
+    //   $this->Rate_VAT          = $visaDetails->Rate_VAT;
+    //   $this->Total             = $visaDetails->Total;
+    //   $this->Status            = $visaDetails->Status;
+    //   $this->Value_Status      = $visaDetails->Value_Status;
+    //   $this->note              = $visaDetails->note;
+    //   $this->Payment_Date      = $visaDetails->Payment_Date;
     }
 
     /**
@@ -55,12 +56,14 @@ class visaExpiredNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->line('Visa Has Been Expired ')
-        ->action('Data "', url())
-        ->line('your visa has been expired')
-        ->line($this->invoice_number ,$this->invoice_number, $this->invoice_name, $this->invoice_Date, $this->Due_date, $this->Due_date, $this->product,
-         $this->section_id, $this->Amount_collection, $this->Amount_Commission, $this->Discount, $this->Value_VAT,
-         $this->Value_Status, $this->note, $this->Payment_Date);
+        ->subject('Expired Visa Email')
+        ->markdown('user.ExpiredVisaEMail', ['data' => $this->data]);
+        // ->line('Visa Has Been Expired ')
+        // ->action('Data "', url())
+        // ->line('your visa has been expired')
+        // ->line($this->invoice_number ,$this->invoice_number, $this->invoice_name, $this->invoice_Date, $this->Due_date, $this->Due_date, $this->product,
+        //  $this->section_id, $this->Amount_collection, $this->Amount_Commission, $this->Discount, $this->Value_VAT,
+        //  $this->Value_Status, $this->note, $this->Payment_Date);
         // ->lineif(1 == 1 ,"Amount paid: {$this->invoice_number}")    
         // ->lineif(1 == 1 ,"Amount paid: {$this->invoice_name}")    
         // ->lineif(1 == 1 ,"Amount paid: {$this->invoice_Date}")    
