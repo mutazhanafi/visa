@@ -6,6 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\invoices;
+use App\User;
+use App\invoices_details;
 
 class visaExpiredNotification extends Notification implements ShouldQueue
 {
@@ -78,5 +81,14 @@ class visaExpiredNotification extends Notification implements ShouldQueue
         // ->lineif(1 == 1 ,"Amount paid: {$this->Value_Status}")    
         // ->lineif(1 == 1 ,"Amount paid: {$this->note}")    
         // ->lineif(1 == 1 ,"Amount paid: {$this->Payment_Date}") ;  
+    }
+
+
+public function build()
+    {
+        
+       $this->data = $all;
+        return view('emails.email');
+        
     }
 }

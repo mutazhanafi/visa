@@ -1,35 +1,24 @@
 <?php
 
 namespace App\Console\Commands;
-
+use App\invoices;
 use Illuminate\Console\Command;
-Use App\User;
-Use App\Invoices;
-use App\invoices_details;
-use App\Events\MyEventClass;
-Use App\Notifications\visaExpiredNotification;
-Use Carbon\Carbon;
-Use Illuminate\Support\Facades\Notifiction;
-use App\Console\Commands\Notification;
-use Illuminate\Notifications\Notifiable;
 
-
-class sendExpiredNotification extends Command
+class expiration extends Command
 {
-    use Notifiable;
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:visaExpiredNotification';
+    protected $signature = 'visa:expir';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send Email When User Visa Date Ends';
+    protected $description = 'expir visa';
 
     /**
      * Create a new command instance.
@@ -57,18 +46,6 @@ class sendExpiredNotification extends Command
                   $user->notify(new visaExpiredNotification($expiredVisa));
                 }
             }
-        }
         
-
-
-
-
-        // $users->visaExpiredNotification();
-        // dd($users);
-        // $users->map(function($user){
-        //         $messages = GetThreadMessages::new($user);
-        //         $user->notify (new visaExpiredNotification($messages, $user));
-        // });
-        // $user->visaExpiredNotification();
-    }
+    }}
 }
