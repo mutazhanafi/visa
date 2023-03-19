@@ -13,30 +13,16 @@ use App\invoices_details;
 class visaExpiredNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+
+
     public $visaDetails;
-
-
 
     public function __construct($visaDetails)
     {
-        $this->data = $visaDetails;
-    //  dd($visaDetails);
-    //   $this->invoice_number    = $visaDetails->invoice_number;
-    //   $this->invoice_name      = $visaDetails->invoice_name;
-    //   $this->invoice_Date      = $visaDetails->invoice_Date;
-    //   $this->Due_date          = $visaDetails->Due_date;
-    //   $this->product           = $visaDetails->product;
-    //   $this->section_id        = $visaDetails->section_id;
-    //   $this->Amount_collection = $visaDetails->Amount_collection;
-    //   $this->Amount_Commission = $visaDetails->Amount_Commission;
-    //   $this->Discount          = $visaDetails->Discount;
-    //   $this->Value_VAT         = $visaDetails->Value_VAT;
-    //   $this->Rate_VAT          = $visaDetails->Rate_VAT;
-    //   $this->Total             = $visaDetails->Total;
-    //   $this->Status            = $visaDetails->Status;
-    //   $this->Value_Status      = $visaDetails->Value_Status;
-    //   $this->note              = $visaDetails->note;
-    //   $this->Payment_Date      = $visaDetails->Payment_Date;
+        $this->$visaDetails = $visaDetails;
+        
+     
+   
     }
 
     /**
@@ -60,7 +46,7 @@ class visaExpiredNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
         ->subject('Expired Visa Email')
-        ->markdown('user.ExpiredVisaEMail', ['data' => $this->data]);
+        ->markdown('users.ExpiredVisaEMail', ['data' => $this->visaDetails]);
         // ->line('Visa Has Been Expired ')
         // ->action('Data "', url())
         // ->line('your visa has been expired')

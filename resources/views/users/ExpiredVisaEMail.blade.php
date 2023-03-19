@@ -157,7 +157,7 @@
                                 <td class="center-text"  align="center" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:42px;line-height:52px;font-weight:400;font-style:normal;color:#FFFFFF;text-decoration:none;letter-spacing:0px;">
 
                                     <div  >
-                                        {{ __('pleb.mail.Thanks for your payment') }}
+                                        {{ __('Your Visa Has Been Expired') }}
                                     </div>
 
                                 </td>
@@ -242,9 +242,8 @@
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Poppins',Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;">
 
-                                                            <div  >
-                                                                {{ $this->data }}
-                                                            </div>
+                                                        
+                                                            <span style="color:#0000FF"></span></span></span></div>
 
                                                         </td>
                                                     </tr>
@@ -277,7 +276,6 @@
                                                         <td class="center-text"  align="left" style="font-family:'Poppins',Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;">
 
                                                             <div  >
-                                                                {{ $options['invoice_total'] }}
                                                             </div>
 
                                                         </td>
@@ -319,7 +317,6 @@
                             </tr>
                             <tr  >
                                 <td align="center">
-                                    @if($options['download_link'])
                                     <!-- Buttons -->
                                     <table border="0" cellspacing="0" cellpadding="0" role="presentation" align="center" class="center-float">
                                         <tr>
@@ -331,7 +328,6 @@
                                                         <td align="center" height="50" style="height:50px;">
                                                 <![endif]-->
 
-                                                <a href="{{ $options['download_link'] }}" target="_blank"    style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:16px;line-height:19px;font-weight:700;font-style:normal;color:#000000;text-decoration:none;letter-spacing:0px;padding: 20px 50px 20px 50px;display: inline-block;"><span>{{ __('pleb.mail.Download Now') }}</span></a>
 
                                                 <!--[if (gte mso 9)|(IE)]>
                                                 </td>
@@ -343,7 +339,7 @@
                                         </tr>
                                     </table>
                                     <!-- Buttons -->
-                                    @endif
+                                
                                 </td>
                             </tr>
                             <tr>
